@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Build files
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Package lock (optional depending on team)
+# package-lock.json
+# yarn.lock
+
+# Coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/
