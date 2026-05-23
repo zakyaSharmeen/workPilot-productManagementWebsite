@@ -24,34 +24,50 @@
 //   });
 // };
 
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
+// import otpEmailTemplate from "./otpEmailTemplate.js";
+
+// const transporter = nodemailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true,
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS,
+//   },
+//   connectionTimeout: 10000,
+//   greetingTimeout: 10000,
+//   socketTimeout: 10000,
+// });
+
+// const sendEmail = async ({ to, subject, html }) => {
+//   await transporter.sendMail({
+//     from: process.env.EMAIL_FROM,
+//     to,
+//     subject,
+//     html,
+//   });
+// };
+
+// export const sendOTPEmail = async (user, otp) => {
+//   const expiresMinutes = parseInt(process.env.OTP_EXPIRES_MINUTES, 10) || 10;
+//   await sendEmail({
+//     to: user.email,
+//     subject: "Verify Your Email — OTP",
+//     html: otpEmailTemplate(user.name, otp, expiresMinutes),
+//   });
+// };
+import { Resend } from "resend";
 import otpEmailTemplate from "./otpEmailTemplate.js";
+import dotenv from "dotenv";
+dotenv.config();
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 10000,
-});
-
-const sendEmail = async ({ to, subject, html }) => {
-  await transporter.sendMail({
-    from: process.env.EMAIL_FROM,
-    to,
-    subject,
-    html,
-  });
-};
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOTPEmail = async (user, otp) => {
   const expiresMinutes = parseInt(process.env.OTP_EXPIRES_MINUTES, 10) || 10;
-  await sendEmail({
+  await resend.emails.send({
+    from: "WorkPilot <onboarding@resend.dev>",
     to: user.email,
     subject: "Verify Your Email — OTP",
     html: otpEmailTemplate(user.name, otp, expiresMinutes),
