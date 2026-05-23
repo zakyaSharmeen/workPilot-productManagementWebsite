@@ -70,11 +70,7 @@ export default function LandingPage() {
               title: "Kanban Board",
               desc: "Drag and drop tasks across Todo, In Progress, and Done.",
             },
-            {
-              icon: "👥",
-              title: "Team Members",
-              desc: "Invite members to projects and assign work easily.",
-            },
+
             {
               icon: "🔍",
               title: "Filters & Search",
