@@ -3,7 +3,7 @@ Project Management Backend API
 A REST API for project and task management built with the MERN stack using Node.js, Express, MongoDB, JWT auth, Cloudinary uploads, and Nodemailer.
 
 Features
-User authentication & OTP verification
+User authentication 
 Project & task management
 Comments & notifications
 File uploads with Cloudinary
@@ -14,7 +14,6 @@ Node.js
 Express.js
 MongoDB + Mongoose
 JWT + bcryptjs
-Nodemailer
 Cloudinary
 express-validator
 Setup
@@ -22,7 +21,7 @@ git clone --repolink
 cd server
 npm install
 
-Create .env from .env.example
+Create .env
 
 npm run dev
 
@@ -47,7 +46,6 @@ Add:
 
 MONGO*URI
 JWT_SECRET
-EMAIL*_
 CLOUDINARY\__
 Health Check
 GET /api/health
